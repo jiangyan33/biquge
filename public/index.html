@@ -1,0 +1,168 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<script type="text/javascript" src="/scripts/m.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<title>笔趣阁_书友最值得收藏!</title>
+	<meta name="keywords" content="笔趣阁,小说阅读网,biduo.cc" />
+	<meta name="description" content="笔趣阁是广大书友最值得收藏的网络小说阅读网，网站收录了当前最火热的网络小说，免费提供高质量的小说最新章节，是广大网络小说爱好者必备的小说阅读网。" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="mobile-agent" content="format=html5; url=https://m.biduo.cc/" />
+	<meta http-equiv="mobile-agent" content="format=xhtml; url=https://m.biduo.cc/" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<script type="text/javascript" src="/scripts/zepto.min.js"></script>
+	<!-- <script type="text/javascript" src="/scripts/header.js"></script> -->
+	<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	<script src="/scripts/js/index.js"></script>
+	<link rel="shortcut icon" href="/images/favicon.ico" />
+</head>
+
+<body ng-app="indexApp" ng-controller="indexController" ng-init="category();findHot();categoryHot();findNewAdd();">
+	<div id="wrapper">
+		<!-- <script>login();</script> -->
+		<div class="header">
+			<div class="header_logo">
+				<a href="/">笔趣阁</a>
+			</div>
+			<!-- <script>panel();</script> -->
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="/">首页</a></li>
+				<li ng-repeat="item in categoryList"><a href="{{item.id}}">{{item.name}}</a></li>
+				<li><a href="/bookcase.html">临时书架</a></li>
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="hotcontent">
+				<div class="l">
+					<div class="item" ng-repeat="item in hotList">
+						<div class="image"><a href="/biquge/41_41060/"><img ng-src="{{item.pic}}" alt="{{item.name}}"
+									width="120" height="150" /></a></div>
+						<dl>
+							<dt><span>{{item.author}}</span><a href="/biquge/41_41060/">{{item.name}}</a></dt>
+							<dd>{{item.intro}}</dd>
+						</dl>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="r">
+					<h2>强势推荐</h2>
+					<ul>
+						<li><span class="s1">[玄幻]</span><span class="s2"><a href="/biquge/41_41864/">元尊</a></span><span
+								class="s5">天蚕土豆</span></li>
+						<li><span class="s1">[玄幻]</span><span class="s2"><a
+									href="/biquge/40_40293/">万界天尊</a></span><span class="s5">血红</span></li>
+						<li><span class="s1">[武侠]</span><span class="s2"><a
+									href="/biquge/40_40149/">一品道门</a></span><span class="s5">第九天命</span></li>
+						<li><span class="s1">[武侠]</span><span class="s2"><a
+									href="/biquge/39_39809/">极道天魔</a></span><span class="s5">滚开</span></li>
+						<li><span class="s1">[武侠]</span><span class="s2"><a
+									href="/biquge/38_38506/">盗天仙途</a></span><span class="s5">荆柯守</span></li>
+						<li><span class="s1">[科幻]</span><span class="s2"><a
+									href="/biquge/18_18255/">史上最强店主</a></span><span class="s5">南极烈日</span></li>
+						<li><span class="s1">[武侠]</span><span class="s2"><a
+									href="/biquge/13_13096/">三寸人间</a></span><span class="s5">耳根</span></li>
+						<li><span class="s1">[玄幻]</span><span class="s2"><a href="/biquge/4_4409/">五行天</a></span><span
+								class="s5">方想</span></li>
+						<li><span class="s1">[武侠]</span><span class="s2"><a href="/biquge/1_1745/">一剑飞仙</a></span><span
+								class="s5">流浪的蛤蟆</span></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="novelslist">
+				<div class="content border" ng-repeat="item in categoryHotList1">
+					<h2>{{item.category_name}}</h2>
+					<div class="top">
+						<div class="image"><a href="/biquge/6_6465/"><img ng-src="{{item.pic}}" alt="{{item.name}}"
+									width="67" height="82" /></a></div>
+						<dl>
+							<dt><a href="/biquge/6_6465/">{{item.name}}</a></dt>
+							<dd> {{item.intro}}
+							</dd>
+						</dl>
+						<div class="clear"></div>
+					</div>
+					<ul>
+						<li ng-repeat="it in item.child"><a href="/biquge/40_40692/">{{it.name}}</a>/{{it.author}}</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="novelslist">
+				<div class="content border" ng-repeat="item in categoryHotList2">
+					<h2>{{item.category_name}}</h2>
+					<div class="top">
+						<div class="image"><a href="/biquge/6_6465/"><img ng-src="{{item.pic}}" alt="{{item.name}}"
+									width="67" height="82" /></a></div>
+						<dl>
+							<dt><a href="/biquge/6_6465/">{{item.name}}</a></dt>
+							<dd> {{item.intro}}
+							</dd>
+						</dl>
+						<div class="clear"></div>
+					</div>
+					<ul>
+						<li ng-repeat="it in item.child"><a href="/biquge/40_40692/">{{it.name}}</a>/{{it.author}}</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="newscontent">
+				<div class="l">
+					<h2>最近更新小说列表</h2>
+					<ul>
+						<li><span class="s1">[都市言情]</span><span class="s2"><a href="/biquge/48_48665/"
+									target="_blank">费先生，借个孕</a></span><span class="s3"><a
+									href="/biquge/48_48665/c21371412.html" target="_blank">第1192章
+									许辰墨吃醋了（2）</a></span><span class="s4">公子衍</span><span class="s5">07-31</span></li>
+					</ul>
+				</div>
+				<div class="r">
+					<h2>最新入库小说</h2>
+					<ul>
+						<li ng-repeat="item in newAddList"><span class="s1">[{{item.category_name}}]</span><span
+								class="s2"><a href="/biquge/52_52424/">{{item.name}}</a></span><span
+								class="s5">{{item.create_time}}</span>
+						</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<div id="firendlink">
+		友情连接：
+		<a href="https://m.biduo.cc/" target=_blank>笔趣阁</a>
+		<a href="https://www.biduo.cc/biquge/40_40783/" target=_blank>超神机械师</a>
+		<a href="https://www.biduo.cc/biquge/9_9251/" target=_blank>如意小郎君</a>
+		<a href="https://www.biduo.cc/biquge/4_4934/" target=_blank>极品全能学生</a>
+		<a href="https://www.biduo.cc/biquge/38_38860/" target=_blank>神级大魔头</a>
+		<a href="https://www.biduo.cc/biquge/40_40394/" target=_blank>医武兵王</a>
+		<a href="https://www.biduo.cc/biquge/40_40878/" target=_blank>我是仙凡</a>
+		<a href="https://www.biduo.cc/biquge/2_2227/" target=_blank>我的贴身校花</a>
+		<a href="https://www.biduo.cc/biquge/40_40298/" target=_blank>最强升级系统</a>
+		<a href="https://www.biduo.cc/biquge/37_37852/" target=_blank>仙药供应商</a>
+		<a href="https://www.biduo.cc/biquge/3_3307/" target=_blank>帝霸</a>
+		<a href="https://www.biduo.cc/biquge/41_41026/" target=_blank>权臣闲妻</a>
+		<a href="https://www.biduo.cc/biquge/39_39888/" target=_blank>无敌真寂寞</a>
+		<a href="https://www.biduo.cc/biquge/40_40319/" target=_blank>异能小神农</a>
+	</div>
+	<!-- <script>read5();</script> -->
+	<div class="footer">
+		<div class="footer_cont">
+			<p>
+				本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+			<p>
+				Copyright ? 2016 笔趣阁 All Rights Reserved.</p>
+			<!-- <script>footer();dl();</script> -->
+		</div>
+	</div>
+</body>
+
+</html>

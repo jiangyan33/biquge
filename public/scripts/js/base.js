@@ -1,11 +1,11 @@
-let app = angular.module('indexApp', []);
+let app = angular.module('indexApp', ['ngSanitize']);
 
-app.controller('baseController', function ($scope, $http) {
+app.controller('baseController', ["$scope", "$http", function ($scope, $http) {
 
+    $scope.baseUrl = 'http://127.0.0.1:3000/api/';
     $scope.category = function () {
         $http({
-            method: 'POST',
-            url: 'http://127.0.0.1:3000/api/Category/category.ac'
+            url: `${$scope.baseUrl}Category/category.ac`
         }).then(function successCallback(response) {
             $scope.categoryList = response.data;
         });
@@ -19,4 +19,16 @@ app.controller('baseController', function ($scope, $http) {
 
         return `${part} ${date.getHours() + 8}:${date.getMinutes()}:${date.getSeconds()}`;
     };
-});
+
+    $scope.formatUrl = function (url) {
+        let params = url.split('?')[1].split('&');
+        let result = {};
+
+        for (let item of params) {
+            let temp = item.split('=');
+            result[temp[0]] = temp[1];
+        }
+
+        return result;
+    };
+}]);

@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="/scripts/zepto.min.js"></script>
 	<!-- <script type="text/javascript" src="/scripts/header.js"></script> -->
 	<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	<script src="https://cdn.staticfile.org/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
 	<script src="/scripts/js/base.js"></script>
 	<script src="/scripts/js/index.js"></script>
 	<link rel="shortcut icon" href="/images/favicon.ico" />
@@ -32,7 +33,8 @@
 						<div class="image"><a href="/novel_info.html?id={{item.id}}"><img ng-src="{{item.pic}}"
 									alt="{{item.name}}" width="120" height="150" /></a></div>
 						<dl>
-							<dt><span>{{item.author}}</span><a href="/biquge/41_41060/">{{item.name}}</a></dt>
+							<dt><span>{{item.author}}</span><a href="/novel_info.html?id={{item.id}}">{{item.name}}</a>
+							</dt>
 							<dd>{{item.intro}}</dd>
 						</dl>
 						<div class="clear"></div>

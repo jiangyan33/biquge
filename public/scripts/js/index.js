@@ -1,10 +1,9 @@
-app.controller('indexController', function ($scope, $controller, $http) {
+app.controller('indexController', ["$scope", "$controller", "$http", function ($scope, $controller, $http) {
     $controller('baseController', { $scope: $scope });
 
     $scope.findHot = function () {
         $http({
-            method: 'POST',
-            url: 'http://127.0.0.1:3000/api/Novel/findHot.ac'
+            url: `${$scope.baseUrl}Novel/findHot.ac`
         }).then(function successCallback(response) {
             $scope.hotList = response.data;
         });
@@ -12,8 +11,7 @@ app.controller('indexController', function ($scope, $controller, $http) {
 
     $scope.categoryHot = function () {
         $http({
-            method: 'POST',
-            url: 'http://127.0.0.1:3000/api/Novel/categoryHot.ac'
+            url: `${$scope.baseUrl}Novel/categoryHot.ac`
         }).then(function successCallback(response) {
             $scope.categoryHotList1 = response.data[0];
 
@@ -23,8 +21,7 @@ app.controller('indexController', function ($scope, $controller, $http) {
 
     $scope.findNewAdd = function () {
         $http({
-            method: 'POST',
-            url: 'http://127.0.0.1:3000/api/Novel/newAddList.ac'
+            url: `${$scope.baseUrl}Novel/newAddList.ac`
         }).then(function successCallback(response) {
             $scope.newAddList = response.data;
 
@@ -36,4 +33,4 @@ app.controller('indexController', function ($scope, $controller, $http) {
         });
     };
 
-});
+}]);

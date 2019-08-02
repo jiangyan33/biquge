@@ -28,11 +28,16 @@
     <!-- <meta property="og:novel:latest_chapter_name" content="1396、残酷的擂台战" /> -->
     <!-- <meta property="og:novel:latest_chapter_url" content="https://www.biduo.cc/biquge/41_41060/c21379865.html" /> -->
     <script type="text/javascript" src="/scripts/zepto.min.js"></script>
-    <script type="text/javascript" src="/scripts/header.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/header.js"></script> -->
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://cdn.staticfile.org/angular.js/1.5.0-beta.0/angular-sanitize.min.js"></script>
+    <script src="/scripts/js/base.js"></script>
+    <script src="/scripts/js/novel-info.js"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
 </head>
 
-<body ng-app="indexApp" ng-controller="indexController" ng-init="category();">
+<body ng-app="indexApp" ng-controller="indexController" ng-init="category();info();">
     <div id="wrapper">
         <div ng-include='"/common.html"'></div>
         <div class="box_con">
@@ -65,12 +70,14 @@
                     href="/biquge/41_41058/">枕边尤物</a><a href="/biquge/41_41057/">枭宠重生之盛妻凌人</a><a
                     href="/biquge/41_41056/">美色难挡</a><a href="/biquge/41_41055/">盛宠之毒医世子妃</a></div>
         </div>
-        <script>listindex();</script>
+        <!-- <script>listindex();</script> -->
         <div class="box_con">
             <div id="list">
                 <dl>
                     <dt>《{{novelInfo.name}}》正文</dt>
-                    <dd ng-repeat="item in novelInfo.chapter"><a href="c14535928.html">{{item.chapter}}</a></dd>
+                    <dd ng-repeat="item in novelInfo.chapter"><a
+                            href="/content.html?id={{item.id}}&category_id={{item.category_id}}">{{item.chapter}}</a>
+                    </dd>
                 </dl>
             </div>
         </div>
@@ -84,12 +91,13 @@
                     title="圣武星辰">圣武星辰</a><a href="/biquge/41_41250/" title="平天策">平天策</a></div>
             <div class="footer_cont">
                 <p>
-                    《圣武星辰》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的都市小说，biduo.cc转载收集圣武星辰最新章节。</p>
-                <script type="text/javascript">footer(); dl();</script>
+                    《{{novelInfo.name}}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的{{novelInfo.category_name}}，本站转载收集{{novelInfo.name}}最新章节。
+                </p>
+                <!-- <script type="text/javascript">footer(); dl();</script> -->
             </div>
         </div>
     </div>
-    <script type="text/javascript" charset="utf-8" src="https://www.baidu.com/js/opensug.js"></script>
+    <!-- <script type="text/javascript" charset="utf-8" src="https://www.baidu.com/js/opensug.js"></script> -->
     <script type="application/ld+json">{
 	"@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
 	"@id": "https://www.biduo.cc/biquge/41_41060/",

@@ -1,15 +1,5 @@
-let app = angular.module('indexApp', []);
-
-app.controller('indexController', function ($scope, $http) {
-
-    $scope.category = function () {
-        $http({
-            method: 'POST',
-            url: 'http://127.0.0.1:3000/api/Category/category.ac'
-        }).then(function successCallback(response) {
-            $scope.categoryList = response.data;
-        });
-    };
+app.controller('indexController', function ($scope, $controller, $http) {
+    $controller('baseController', { $scope: $scope });
 
     $scope.findHot = function () {
         $http({
@@ -38,17 +28,11 @@ app.controller('indexController', function ($scope, $http) {
         }).then(function successCallback(response) {
             $scope.newAddList = response.data;
 
-            console.log(response.data);
-
             $scope.newAddList = response.data.map(item => {
                 item.category_name = item.category_name.substr(0, 2);
-
-                item.create_time = item.create_time.split('T')[0];
-
+                item.create_time = $scope.format(item.create_time);
                 return item;
             });
-
-            console.log($scope.newAddList);
         });
     };
 

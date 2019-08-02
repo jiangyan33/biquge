@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="/scripts/zepto.min.js"></script>
 	<!-- <script type="text/javascript" src="/scripts/header.js"></script> -->
 	<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+	<script src="/scripts/js/base.js"></script>
 	<script src="/scripts/js/index.js"></script>
 	<link rel="shortcut icon" href="/images/favicon.ico" />
 </head>
@@ -23,26 +24,13 @@
 <body ng-app="indexApp" ng-controller="indexController" ng-init="category();findHot();categoryHot();findNewAdd();">
 	<div id="wrapper">
 		<!-- <script>login();</script> -->
-		<div class="header">
-			<div class="header_logo">
-				<a href="/">笔趣阁</a>
-			</div>
-			<!-- <script>panel();</script> -->
-		</div>
-		<div class="nav">
-			<ul>
-				<li><a href="/">首页</a></li>
-				<li ng-repeat="item in categoryList"><a href="{{item.id}}">{{item.name}}</a></li>
-				<li><a href="/bookcase.html">临时书架</a></li>
-			</ul>
-		</div>
-
+		<div ng-include='"/common.html"'></div>
 		<div id="main">
 			<div id="hotcontent">
 				<div class="l">
 					<div class="item" ng-repeat="item in hotList">
-						<div class="image"><a href="/biquge/41_41060/"><img ng-src="{{item.pic}}" alt="{{item.name}}"
-									width="120" height="150" /></a></div>
+						<div class="image"><a href="/novel_info.html?id={{item.id}}"><img ng-src="{{item.pic}}"
+									alt="{{item.name}}" width="120" height="150" /></a></div>
 						<dl>
 							<dt><span>{{item.author}}</span><a href="/biquge/41_41060/">{{item.name}}</a></dt>
 							<dd>{{item.intro}}</dd>
